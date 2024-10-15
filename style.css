@@ -1,0 +1,321 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'poppins', sans-serif;
+}
+
+:root {
+	--background-color: #ffffff;
+	--navigation-color: #1876f2;
+	--body-color: #efefef;
+}
+
+.dark-theme {
+	--background-color: #121212;
+	--navigation-color: #121212;
+	--body-color: #121212;
+}
+
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	transition: background 0.4s ease;
+	overflow-x: hidden;
+	/* background: #f0f2f5;
+	color: #5f5f5f; */
+}
+
+a {
+	text-decoration: none;
+	color: #5a5a5a;
+}
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+img {
+	cursor: pointer;
+}
+
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+/*
+  8. Create a root stacking context
+*/
+#root,
+#__next {
+	isolation: isolate;
+}
+
+.flex-div {
+	display: flex;
+	align-items: center;
+}
+
+nav {
+	padding: 10px 2.5%;
+	justify-content: space-between;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	background: #ffffff;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.nav-right img {
+	width: 25px;
+	margin-right: 25px;
+	display: inline-block;
+}
+
+.nav-right img:last-child {
+	width: 38px;
+	border-radius: 50%;
+	margin-right: 0;
+}
+
+.nav-left img.menu-icon {
+	width: 23px;
+	margin-right: 25px;
+}
+
+.nav-left img.log-icon {
+	width: 130px;
+}
+
+.nav-middle .mic-icon {
+	width: 16px;
+}
+
+.nav-middle {
+	flex: 1;
+	max-width: 440px;
+}
+.nav-middle .search-box {
+	border: 1px solid #ccc;
+	margin-right: 14px;
+	padding: 8px 12px;
+	border-radius: 25px;
+	width: 100%;
+}
+
+.nav-middle .search-box img {
+	width: 15px;
+}
+
+.nav-middle input {
+	flex: 1;
+	border: 0;
+	outline: 0;
+	background: transparent;
+}
+
+.sidebar {
+	width: 15%;
+	height: 100vh;
+	background: #ffffff;
+	position: fixed;
+	top: 0;
+	padding-top: 80px;
+	padding-left: 2%;
+}
+
+.sidebar .sort-link a img {
+	width: 21px;
+	margin-right: 20px;
+}
+
+.sidebar .sort-link a {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	flex-wrap: wrap;
+	width: fit-content;
+}
+
+.sidebar .sort-link a:first-child {
+	color: #ed3838;
+}
+
+.sidebar .sort-link hr {
+	border: 0;
+	height: 1px;
+	background: #ccc;
+	width: 85%;
+}
+
+.subcribed-list h3 {
+	font-size: 13px;
+	margin: 20px 0;
+	color: #ed3838;
+}
+
+.subcribed-list a {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	flex-wrap: wrap;
+	width: fit-content;
+}
+
+.subcribed-list a img {
+	width: 25px;
+	border-radius: 50%;
+	margin-right: 20px;
+}
+
+.small-sidebar {
+	width: 5%;
+}
+
+.small-sidebar a p {
+	display: none;
+}
+
+.small-sidebar h3 {
+	display: none;
+}
+
+.small-sidebar hr {
+	width: 50%;
+	margin-bottom: 20px;
+}
+
+/*  Main content */
+
+.container {
+	background: #f9f9f9;
+	padding-left: 17%;
+	padding-right: 2%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.container.large-container {
+	padding-left: 7%;
+}
+
+.banner {
+	width: 100%;
+}
+
+.banner img {
+	width: 100%;
+	border-radius: 8px;
+}
+
+.lis-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-column-gap: 16px;
+	grid-row-gap: 30px;
+	margin-top: 15px;
+}
+
+.lis-container .video-list .thumbnail {
+	width: 100%;
+	border-radius: 5px;
+}
+
+.lis-container .video-list .flex-div {
+	align-items: flex-start;
+	margin-top: 7px;
+}
+
+.lis-container .video-list .flex-div img {
+	width: 36px;
+	margin-right: 12px;
+	border-radius: 50%;
+}
+
+.lis-container .wid-info {
+	color: #5a5a5a;
+	font-size: 13px;
+}
+
+.lis-container .wid-info a {
+	color: #000;
+	font-weight: 600;
+	display: block;
+	margin-bottom: 5px;
+}
+
+/* Media query */
+@media only screen and (max-width: 900px) {
+	.sidebar {
+		display: none;
+	}
+	.menu-icon {
+		display: none;
+	}
+
+	.container,
+	.large-container {
+		padding-left: 2%;
+		padding-right: 32;
+	}
+
+	.nav-right img {
+		display: none;
+	}
+
+	.nav-right img {
+		display: none;
+	}
+
+	img.user-icon {
+		display: 30px;
+		display: block;
+	}
+
+	.nav-middle .mic-icon {
+		display: none;
+	}
+
+	.log-icon {
+		width: 60px;
+	}
+}
