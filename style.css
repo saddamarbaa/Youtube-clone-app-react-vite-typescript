@@ -319,3 +319,60 @@ nav {
 		width: 60px;
 	}
 }
+
+button {
+	background: #1876f2;
+	padding: 7px;
+	color: white;
+	margin: 50px;
+	cursor: pointer;
+}
+
+.event {
+	font-family: Arial, sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #f0f0f0;
+}
+
+.event div {
+	margin: 20px;
+	padding: 20px;
+	border: 2px solid black;
+}
+
+#great-grandparent {
+	background-color: #ffcccc;
+}
+
+#grandparent {
+	background-color: #ff9999;
+}
+
+#parent {
+	background-color: #ff6666;
+}
+
+#child {
+	background-color: #ff3333;
+}
+
+.debounce {
+	margin: 20px;
+	padding: 25%;
+}
+.debounce input {
+	padding: 10px;
+	font-size: 16px;
+	width: 100%;
+	max-width: 400px;
+	margin-bottom: 10px;
+}
+.debounce div {
+	margin: 5px 0;
+}
+span {
+	font-weight: bold;
+}
