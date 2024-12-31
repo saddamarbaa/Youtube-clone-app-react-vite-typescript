@@ -28,6 +28,8 @@ export default function HomeScreen() {
 		// enabled: false,
 	})
 
+	console.log(videos)
+
 	if (isLoading) return <ShimmerLoader />
 
 	return (

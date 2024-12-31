@@ -38,37 +38,73 @@ export const mockVideos = [
 	},
 	{
 		kind: 'youtube#searchResult',
-		etag: 'PwmHwF6VnrSfV63D19WDETZBdp0',
+		etag: 'ZdmlyDkOKWp-zj6HCXfeiN97Ukc',
 		id: {
 			kind: 'youtube#video',
-			videoId: 'lkIFF4maKMU',
+			videoId: 'W-6SiM8wmaI',
 		},
 		snippet: {
-			publishedAt: '2022-11-22T15:04:57Z',
-			channelId: 'UCsBjURrPoezykLs9EqgamOA',
-			title: '100+ JavaScript Concepts you Need to Know',
+			publishedAt: '2024-12-26T13:30:29Z',
+			channelId: 'UCmRbHAgG2k2vDUvb3xsEunQ',
+			title:
+				'Donald Trump Takes A Swipe At Barack Obama In His Christmas Message | US News | N18G',
 			description:
-				'The ultimate 10 minute JavaScript course that quickly breaks down over 100 key concepts every web developer should know.',
+				"\"When you see the guy, who said, 'You'll never be President', at your inauguration,' President-elect Donald Trump shared a ...",
 			thumbnails: {
 				default: {
-					url: 'https://i.ytimg.com/vi/lkIFF4maKMU/default.jpg',
+					url: 'https://i.ytimg.com/vi/W-6SiM8wmaI/default.jpg',
 					width: 120,
 					height: 90,
 				},
 				medium: {
-					url: 'https://i.ytimg.com/vi/lkIFF4maKMU/mqdefault.jpg',
+					url: 'https://i.ytimg.com/vi/W-6SiM8wmaI/mqdefault.jpg',
 					width: 320,
 					height: 180,
 				},
 				high: {
-					url: 'https://i.ytimg.com/vi/lkIFF4maKMU/hqdefault.jpg',
+					url: 'https://i.ytimg.com/vi/W-6SiM8wmaI/hqdefault.jpg',
 					width: 480,
 					height: 360,
 				},
 			},
-			channelTitle: 'Fireship',
+			channelTitle: 'CNBC-TV18',
 			liveBroadcastContent: 'none',
-			publishTime: '2022-11-22T15:04:57Z',
+			publishTime: '2024-12-26T13:30:29Z',
+		},
+	},
+	{
+		kind: 'youtube#searchResult',
+		etag: 'bIopr6nrClfICh3IH-IqbP-aPAY',
+		id: {
+			kind: 'youtube#video',
+			videoId: 'EerdGm-ehJQ',
+		},
+		snippet: {
+			publishedAt: '2024-05-09T07:28:14Z',
+			channelId: 'UCB6dvaWu0N8uVq2yKsZ5s5g',
+			title: 'JavaScript Tutorial Full Course - Beginner to Pro (2024)',
+			description:
+				'Certificates are now available! https://courses.supersimple.dev/courses/javascript Enroll to get a Certificate of Completion and ...',
+			thumbnails: {
+				default: {
+					url: 'https://i.ytimg.com/vi/EerdGm-ehJQ/default.jpg',
+					width: 120,
+					height: 90,
+				},
+				medium: {
+					url: 'https://i.ytimg.com/vi/EerdGm-ehJQ/mqdefault.jpg',
+					width: 320,
+					height: 180,
+				},
+				high: {
+					url: 'https://i.ytimg.com/vi/EerdGm-ehJQ/hqdefault.jpg',
+					width: 480,
+					height: 360,
+				},
+			},
+			channelTitle: 'SuperSimpleDev',
+			liveBroadcastContent: 'none',
+			publishTime: '2024-05-09T07:28:14Z',
 		},
 	},
 	{
@@ -143,39 +179,40 @@ export const mockVideos = [
 	},
 	{
 		kind: 'youtube#searchResult',
-		etag: 'bIopr6nrClfICh3IH-IqbP-aPAY',
+		etag: 'PwmHwF6VnrSfV63D19WDETZBdp0',
 		id: {
 			kind: 'youtube#video',
-			videoId: 'EerdGm-ehJQ',
+			videoId: 'lkIFF4maKMU',
 		},
 		snippet: {
-			publishedAt: '2024-05-09T07:28:14Z',
-			channelId: 'UCB6dvaWu0N8uVq2yKsZ5s5g',
-			title: 'JavaScript Tutorial Full Course - Beginner to Pro (2024)',
+			publishedAt: '2022-11-22T15:04:57Z',
+			channelId: 'UCsBjURrPoezykLs9EqgamOA',
+			title: '100+ JavaScript Concepts you Need to Know',
 			description:
-				'Certificates are now available! https://courses.supersimple.dev/courses/javascript Enroll to get a Certificate of Completion and ...',
+				'The ultimate 10 minute JavaScript course that quickly breaks down over 100 key concepts every web developer should know.',
 			thumbnails: {
 				default: {
-					url: 'https://i.ytimg.com/vi/EerdGm-ehJQ/default.jpg',
+					url: 'https://i.ytimg.com/vi/lkIFF4maKMU/default.jpg',
 					width: 120,
 					height: 90,
 				},
 				medium: {
-					url: 'https://i.ytimg.com/vi/EerdGm-ehJQ/mqdefault.jpg',
+					url: 'https://i.ytimg.com/vi/lkIFF4maKMU/mqdefault.jpg',
 					width: 320,
 					height: 180,
 				},
 				high: {
-					url: 'https://i.ytimg.com/vi/EerdGm-ehJQ/hqdefault.jpg',
+					url: 'https://i.ytimg.com/vi/lkIFF4maKMU/hqdefault.jpg',
 					width: 480,
 					height: 360,
 				},
 			},
-			channelTitle: 'SuperSimpleDev',
+			channelTitle: 'Fireship',
 			liveBroadcastContent: 'none',
-			publishTime: '2024-05-09T07:28:14Z',
+			publishTime: '2022-11-22T15:04:57Z',
 		},
 	},
+
 	{
 		kind: 'youtube#searchResult',
 		etag: 'kU0drmqPojaB0J1maxFb4MteXgc',
@@ -8118,42 +8155,7 @@ export const mostPopular = [
 			publishTime: '2022-09-14T11:29:36Z',
 		},
 	},
-	{
-		kind: 'youtube#searchResult',
-		etag: 'ZdmlyDkOKWp-zj6HCXfeiN97Ukc',
-		id: {
-			kind: 'youtube#video',
-			videoId: 'W-6SiM8wmaI',
-		},
-		snippet: {
-			publishedAt: '2024-12-26T13:30:29Z',
-			channelId: 'UCmRbHAgG2k2vDUvb3xsEunQ',
-			title:
-				'Donald Trump Takes A Swipe At Barack Obama In His Christmas Message | US News | N18G',
-			description:
-				"\"When you see the guy, who said, 'You'll never be President', at your inauguration,' President-elect Donald Trump shared a ...",
-			thumbnails: {
-				default: {
-					url: 'https://i.ytimg.com/vi/W-6SiM8wmaI/default.jpg',
-					width: 120,
-					height: 90,
-				},
-				medium: {
-					url: 'https://i.ytimg.com/vi/W-6SiM8wmaI/mqdefault.jpg',
-					width: 320,
-					height: 180,
-				},
-				high: {
-					url: 'https://i.ytimg.com/vi/W-6SiM8wmaI/hqdefault.jpg',
-					width: 480,
-					height: 360,
-				},
-			},
-			channelTitle: 'CNBC-TV18',
-			liveBroadcastContent: 'none',
-			publishTime: '2024-12-26T13:30:29Z',
-		},
-	},
+
 	{
 		kind: 'youtube#video',
 		etag: 'tNcjibcHVCTTMns2v3km6eESB_Q',

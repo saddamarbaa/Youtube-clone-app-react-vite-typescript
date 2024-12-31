@@ -27,9 +27,7 @@ export const fetchVideos = async (
 	const json = await response.json()
 	const data: YouTubeVideo[] = json.items || []
 
-	return data.filter((video) => {
-		return video.kind === 'youtube#video'
-	})
+	return data
 }
 
 export const fetchVideo = async (

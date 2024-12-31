@@ -23,8 +23,8 @@ export default function VideoCard({ video }: Props) {
 			<Thumbnail
 				src={thumbnail.url}
 				alt="Video Thumbnail"
-				width={thumbnail.width}
-				height={thumbnail.height}
+				width={350}
+				height={250}
 			/>
 			<ChannelInfo>
 				<ChannelImage src={thumbnail.url} alt="Channel Thumbnail" />
@@ -56,7 +56,7 @@ const ChannelInfo = styled.div`
 
 const CardContainer = styled.div`
 	width: 100%;
-	/* max-width: 350px; */
+	min-width: 300px;
 	border-radius: 12px;
 	margin: 16px;
 	overflow: hidden;
@@ -71,12 +71,13 @@ const CardContainer = styled.div`
 `
 
 const Thumbnail = styled.img<{ width?: number; height?: number }>`
-	width: ${({ width = 320 }) => width}px; /* Default width: 320px */
-	height: ${({ height = 180 }) => height}px; /* Default height: 180px */
+	width: ${({ width = 320 }) => width}px;
+	height: ${({ height = 180 }) => height}px;
 	border-radius: 12px;
 	object-fit: cover;
 	max-height: 220px;
 	margin-bottom: 4px;
+	min-width: 320px;
 `
 
 const ChannelImage = styled.img`
