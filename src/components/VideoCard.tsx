@@ -10,7 +10,7 @@ interface Props {
 	filter?: string | null
 }
 
-export default function VideoCard({ video, filter }: Props) {
+export default function VideoCard({ video }: Props) {
 	const { snippet, statistics } = video
 	const { channelTitle, title, thumbnails, publishedAt } = snippet
 

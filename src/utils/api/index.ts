@@ -27,14 +27,8 @@ export const fetchVideos = async (
 	const json = await response.json()
 	const data: YouTubeVideo[] = json.items || []
 
-	console.log(data)
-
 	return data.filter((video) => {
-		if (!filter) {
-			return video.kind === 'youtube#video'
-		} else {
-			return video.id.kind === 'youtube#video'
-		}
+		return video.kind === 'youtube#video'
 	})
 }
 

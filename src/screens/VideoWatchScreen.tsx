@@ -13,7 +13,11 @@ import ShimmerLoader from '../components/ShimmerLoader'
 export default function VideoWatchScreen() {
 	const [searchParams] = useSearchParams()
 	const videoId = searchParams.get('v')
-	const { data, isLoading, error } = useQuery({
+	const {
+		data,
+		isLoading,
+		// error
+	} = useQuery({
 		queryKey: ['videos' + videoId],
 		queryFn: () => fetchVideo(videoId),
 		enabled: !!videoId,

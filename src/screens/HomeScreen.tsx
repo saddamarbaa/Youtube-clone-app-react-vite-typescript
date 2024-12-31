@@ -21,7 +21,7 @@ export default function HomeScreen() {
 	const {
 		data: videos,
 		isLoading,
-		error,
+		// error,
 	} = useQuery({
 		queryKey: ['videos', filter],
 		queryFn: () => fetchVideos(filter),

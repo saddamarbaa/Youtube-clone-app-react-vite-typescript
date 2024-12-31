@@ -10,7 +10,7 @@ import {
 } from 'react-icons/fa'
 
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { Link, useNavigate } from 'react-router'
+import { Link } from 'react-router'
 
 import { auth } from '../config'
 import { getRandomIntNumberBetween } from '../utils/lib'
@@ -25,7 +25,7 @@ import { useAppContext } from '../globalStates'
 const MainNavigation = () => {
 	const [searchTerm, setSearchTerm] = useState<string | ''>('')
 	const [user] = useAuthState(auth)
-	const history = useNavigate()
+	// const history = useNavigate()
 	const debouncedSearchTerm = useDebounce(searchTerm, 300)
 	const [isSuggestionSelected, setIsSuggestionSelected] = useState(false)
 	const [isTyping, setIsTyping] = useState(false)
@@ -34,7 +34,7 @@ const MainNavigation = () => {
 	const {
 		data: suggestions = [],
 		isLoading,
-		error,
+		// error,
 	} = useQuery({
 		queryKey: ['youtubeSearch', debouncedSearchTerm],
 		queryFn: () => fetchYouTubeSuggestions(debouncedSearchTerm),
@@ -65,7 +65,7 @@ const MainNavigation = () => {
 		updateFilter('ai and coding new')
 	}
 
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = (_event: React.FormEvent<HTMLFormElement>) => {
 		// history(`/?q=`)
 		if (searchTerm) {
 			// Handle search submit action here
@@ -79,7 +79,7 @@ const MainNavigation = () => {
 				.then(() => {
 					// Sign-out successful.
 				})
-				.catch((error) => {
+				.catch((_error) => {
 					// An error happened.
 				})
 		}
@@ -332,6 +332,7 @@ const HeaderMiddleContainer = styled.div`
 const HeaderRightContainer = styled.div`
 	/* flex: 0.3; */
 	display: flex;
+	align-items: center;
 `
 
 const SearchContainer = styled.form`

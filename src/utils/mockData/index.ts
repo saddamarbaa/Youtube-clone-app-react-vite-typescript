@@ -1,6 +1,6 @@
 import { YouTubeVideo, YouTubeVideoComment } from '../../types'
 
-export const mockVideos: YouTubeVideo[] = [
+export const mockVideos = [
 	{
 		kind: 'youtube#searchResult',
 		etag: '3FpFZkpT5UoAiefrLYg8UcC0DqM',
@@ -6184,9 +6184,9 @@ export const mockVideos: YouTubeVideo[] = [
 			publishTime: '2024-08-25T09:55:35Z',
 		},
 	},
-]
+] as unknown as YouTubeVideo[]
 
-export const mockVideo: YouTubeVideo = {
+export const mockVideo = {
 	kind: 'youtube#video',
 	etag: 'QNkMztaIX5DH46b3sLB2Hb_GUqc',
 	id: '9pHtygkRNuA',
@@ -6272,9 +6272,9 @@ export const mockVideo: YouTubeVideo = {
 		favoriteCount: '0',
 		commentCount: '2338',
 	},
-}
+} as unknown as YouTubeVideo
 
-export const mockComments: YouTubeVideoComment[] = [
+export const mockComments = [
 	{
 		kind: 'youtube#commentThread',
 		etag: '_eYtGKA3xynjz9BOrBgMr3k-fIs',
@@ -8045,9 +8045,9 @@ export const mockComments: YouTubeVideoComment[] = [
 			isPublic: true,
 		},
 	},
-]
+] as unknown as YouTubeVideoComment[]
 
-export const mostPopular: YouTubeVideo[] = [
+export const mostPopular = [
 	{
 		kind: 'youtube#searchResult',
 		etag: '3FpFZkpT5UoAiefrLYg8UcC0DqM',
@@ -11957,4 +11957,4 @@ export const mostPopular: YouTubeVideo[] = [
 			commentCount: '497',
 		},
 	},
-]
+] as unknown as YouTubeVideo[]
