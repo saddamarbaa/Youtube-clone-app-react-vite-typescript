@@ -20,7 +20,10 @@ export default function RelatedVideos({ videoId }: Props) {
 
 	const filter = state?.search
 
-	const { data, isLoading, error } = useQuery({
+	const {
+		data,
+		// isLoading, error
+	} = useQuery({
 		queryKey: ['videos' + videoId],
 		queryFn: () => fetchRelatedVideos(filter),
 		enabled: !!videoId,
@@ -37,7 +40,7 @@ export default function RelatedVideos({ videoId }: Props) {
 			{videos &&
 				videos?.map((video) => {
 					const { snippet, statistics } = video
-					const { channelTitle, title, thumbnails, publishedAt } = snippet
+					const { title, thumbnails, publishedAt } = snippet
 
 					const thumbnail = thumbnails?.high || thumbnails?.medium
 					const videoId =
