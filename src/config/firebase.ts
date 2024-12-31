@@ -13,15 +13,14 @@ import {
 
 import { getFirestore } from 'firebase/firestore'
 const googleProvider = new GoogleAuthProvider()
-console.log()
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyBusmlby-23Ej8g5p6B-2jGbAzP8Mj8JFA',
-	authDomain: 'youtub-clone-app-nex-js.firebaseapp.com',
-	projectId: 'youtub-clone-app-nex-js',
-	storageBucket: 'youtub-clone-app-nex-js.firebasestorage.app',
-	messagingSenderId: '158493669018',
-	appId: '1:158493669018:web:1c036836f93b7f37bd5123',
+	apiKey: import.meta.env.VITE_REACT_APP_FIREBASE_API_KEY,
+	authDomain: import.meta.env.VITE_REACT_APP_AUTH_DOMAIN,
+	projectId: import.meta.env.VITE_REACT_APP_PROJECT_ID,
+	storageBucket: import.meta.env.VITE_REACT_APP_STORAGE_BUCKET,
+	messagingSenderId: import.meta.env.VITE_REACT_APP_MESSAIN_SENDER_ID,
+	appId: import.meta.env.VITE_REACT_APP_APPID,
 }
 
 // Initialize Firebase
