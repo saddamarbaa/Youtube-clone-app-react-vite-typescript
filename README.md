@@ -39,8 +39,7 @@ Welcome to my **YouTube Clone** project! This dynamic, full-stack video streamin
 
 ## 🚀 Live Demo
 
-You can check out the live demo of the YouTube Clone project at:  
-[Live Demo](https://youtube-clone-app-react-vite-typescript.vercel.app/)
+You can check out the live demo of the YouTube Clone project at:  [Live Demo](https://youtube-clone-app-react-vite-typescript.vercel.app/)
 
 
 
