@@ -10,13 +10,11 @@ import ShimmerLoader from '../components/ShimmerLoader'
 // import ErrorCard from '../components/ErrorCard'
 import { mockVideos } from '../utils/mockData'
 import { useAppContext } from '../globalStates'
-import { useEffect, useState } from 'react'
 
 export default function HomeScreen() {
 	// const [searchParams] = useSearchParams()
 	// const filter = searchParams.get('filter')
 	const { state } = useAppContext()
-	const [hasNextPage, setHasNextPage] = useState(true)
 
 	const filter = state.filter
 
@@ -29,20 +27,6 @@ export default function HomeScreen() {
 		queryFn: () => fetchVideos(filter),
 		// enabled: false,
 	})
-
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollTop = window.innerHeight + document.documentElement.scrollTop
-			const scrollHeight = document.documentElement.scrollHeight
-			console.log(scrollTop)
-			if (scrollTop + 1 >= scrollHeight && !isLoading && hasNextPage) {
-				// fetchNextPage()
-			}
-		}
-
-		window.addEventListener('scroll', handleScroll)
-		return () => window.removeEventListener('scroll', handleScroll)
-	}, [isLoading, hasNextPage])
 
 	if (isLoading) return <ShimmerLoader />
 
