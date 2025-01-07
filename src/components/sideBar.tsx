@@ -23,9 +23,9 @@ import {
 	FaCog,
 	FaSun,
 } from 'react-icons/fa'
+import { Link } from 'react-router'
 
 import Option from './SideBarOption'
-import { Link } from 'react-router'
 
 const SideBar: React.FC = () => {
 	return (
@@ -34,45 +34,141 @@ const SideBar: React.FC = () => {
 				<SideBarBody>
 					<div className="body-head">
 						<Link to={'/'}>
-							<Option Icon={FaHome} title="Home" />
+							<Option
+								Icon={FaHome}
+								title="Home"
+								search="home videos trending, sport"
+							/>
 						</Link>
-						<Option Icon={FaExchangeAlt} title="Explore" />
-						<Option Icon={FaVideo} title="Subscriptions" />
+						<Option
+							Icon={FaExchangeAlt}
+							title="Explore"
+							search="home videos trending"
+						/>
+						<Option
+							Icon={FaVideo}
+							title="Subscriptions"
+							search="subscriptions latest uploads"
+						/>
 					</div>
 					<div className="body-head">
-						<Option Icon={FaVideo} title="Library" />
-						<Option Icon={FaClock} title="History" />
-						<Option Icon={FaVideo} title="Your Videos" />
-						<Option Icon={FaClock} title="Watch Later" />
-						<Option Icon={FaThumbsUp} title="Like" />
+						<Option
+							Icon={FaVideo}
+							title="Library"
+							search="library saved videos"
+						/>
+						<Option
+							Icon={FaClock}
+							title="History"
+							search="video watch history"
+						/>
+						<Option
+							Icon={FaVideo}
+							title="Your Videos"
+							search="your uploaded videos"
+						/>
+						<Option
+							Icon={FaClock}
+							title="Watch Later"
+							search="videos watch later"
+						/>
+						<Option
+							Icon={FaThumbsUp}
+							title="Liked Videos"
+							search="liked videos and playlists"
+						/>
 					</div>
 
-					<Option Icon={FaTv} title="Live Videos" />
-
-					<Option Icon={FaListAlt} title="Most Recently" />
-					<Option Icon={FaUsers} title="Group" />
-					<Option Icon={FaStore} title="MarketPlace" />
-
-					<Option Icon={FaVideo} title="Watch" />
-
-					<Option Icon={FaClock} title="Memories" />
-					<Option Icon={FaBookmark} title="Saved" />
-					<Option Icon={FaFlag} title="Pages" />
-					<Option Icon={FaHeart} title="Covid19 Information" />
-					<Option Icon={FaCalendarAlt} title="Events" />
-					<Option Icon={FaBriefcase} title="Jobs" />
-
-					<Option Icon={FaChartBar} title="Ads Manager" />
-
-					<Option Icon={FaPaperPlane} title="Campus" />
-
-					<Option Icon={FaStar} title="Favorites" />
-
-					<Option Icon={FaUserFriends} title="Friends List" />
-					<Option Icon={FaGamepad} title="Video Games" />
-
-					<Option Icon={FaCog} title="Messenger Kid" />
-					<Option Icon={FaSun} title="Weather" />
+					<Option
+						Icon={FaTv}
+						title="Live Videos"
+						search="live streams news sports"
+					/>
+					<Option
+						Icon={FaListAlt}
+						title="Most Recently"
+						search="recently watched videos"
+					/>
+					<Option
+						Icon={FaUsers}
+						title="Group"
+						search="community group videos"
+					/>
+					<Option
+						Icon={FaStore}
+						title="MarketPlace"
+						search="shopping marketplace items"
+					/>
+					<Option
+						Icon={FaVideo}
+						title="Watch"
+						search="watch recommended videos"
+					/>
+					<Option
+						Icon={FaClock}
+						title="Memories"
+						search="video memories personal moments"
+					/>
+					<Option
+						Icon={FaBookmark}
+						title="Saved"
+						search="saved playlists and videos"
+					/>
+					<Option
+						Icon={FaFlag}
+						title="Pages"
+						search="your pages and subscriptions"
+					/>
+					<Option
+						Icon={FaHeart}
+						title="Covid19 Information"
+						search="covid-19 updates and news"
+					/>
+					<Option
+						Icon={FaCalendarAlt}
+						title="Events"
+						search="upcoming live events"
+					/>
+					<Option
+						Icon={FaBriefcase}
+						title="Jobs"
+						search="job opportunities videos"
+					/>
+					<Option
+						Icon={FaChartBar}
+						title="Ads Manager"
+						search="manage ads campaigns youtube"
+					/>
+					<Option
+						Icon={FaPaperPlane}
+						title="Campus"
+						search="university videos and updates"
+					/>
+					<Option
+						Icon={FaStar}
+						title="Favorites"
+						search="your favorite videos and playlists"
+					/>
+					<Option
+						Icon={FaUserFriends}
+						title="Friends List"
+						search="videos from friends"
+					/>
+					<Option
+						Icon={FaGamepad}
+						title="Video Games"
+						search="gaming videos and live streams"
+					/>
+					<Option
+						Icon={FaCog}
+						title="Messenger Kid"
+						search="messenger kids app"
+					/>
+					<Option
+						Icon={FaSun}
+						title="Weather"
+						search="weather forecasts and updates"
+					/>
 				</SideBarBody>
 			</div>
 		</SideBarWrapper>
