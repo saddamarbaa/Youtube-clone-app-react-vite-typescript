@@ -2,9 +2,12 @@ import styled, { keyframes } from 'styled-components'
 
 import ShimmerHeader from './ShimmerHeader'
 import loadingSpinner from '../assets/svg/loading-spinner.svg'
+import { useThemeContext } from '../globalStates/contexts/ThemeContext'
 
 export default function ShimmerLoader() {
 	const loadingItems = Array(16).fill(null)
+
+	const { theme } = useThemeContext()
 
 	return (
 		<FeedWrapper>
@@ -12,13 +15,13 @@ export default function ShimmerLoader() {
 			<Grid>
 				{loadingItems.map((_, index) => {
 					return (
-						<ShimmerContainer key={index}>
-							<ShimmerThumbnail />
+						<ShimmerContainer key={index} theme={theme}>
+							<ShimmerThumbnail theme={theme} />
 							<ShimmerChannelInfo>
-								<ShimmerCircle />
+								<ShimmerCircle theme={theme} />
 								<div>
-									<ShimmerText width="220px" />
-									<ShimmerText width="100px" />
+									<ShimmerText width="220px" theme={theme} />
+									<ShimmerText width="100px" theme={theme} />
 								</div>
 							</ShimmerChannelInfo>
 						</ShimmerContainer>
@@ -58,12 +61,13 @@ const FeedWrapper = styled.div`
 	flex: 1;
 `
 
-const ShimmerContainer = styled.div`
+const ShimmerContainer = styled.div<{ theme?: string }>`
 	width: 100%;
 	max-width: 350px;
 	border-radius: 12px;
 	overflow: hidden;
-	background-color: #f0f0f0;
+	background-color: ${({ theme }) =>
+		theme === 'dark' ? '#2c2c2c' : '#f0f0f0'};
 	display: flex;
 	flex-direction: column;
 	padding: 1rem;
@@ -72,16 +76,17 @@ const ShimmerContainer = styled.div`
 	cursor: pointer;
 `
 
-const ShimmerThumbnail = styled.div`
+const ShimmerThumbnail = styled.div<{ theme?: string }>`
 	width: 100%;
 	height: 180px;
-	background-color: #e0e0e0;
+	background-color: ${({ theme }) =>
+		theme === 'dark' ? '#3a3a3a' : '#e0e0e0'};
 	background-image: linear-gradient(
 		to right,
-		#f0f0f0 0%,
-		#e0e0e0 20%,
-		#f0f0f0 40%,
-		#f0f0f0 100%
+		${({ theme }) => (theme === 'dark' ? '#2c2c2c' : '#f0f0f0')} 0%,
+		${({ theme }) => (theme === 'dark' ? '#3a3a3a' : '#e0e0e0')} 20%,
+		${({ theme }) => (theme === 'dark' ? '#2c2c2c' : '#f0f0f0')} 40%,
+		${({ theme }) => (theme === 'dark' ? '#2c2c2c' : '#f0f0f0')} 100%
 	);
 	background-repeat: no-repeat;
 	background-size: 200% 100%;
@@ -95,16 +100,17 @@ const ShimmerChannelInfo = styled.div`
 	align-items: center;
 `
 
-const ShimmerCircle = styled.div`
+const ShimmerCircle = styled.div<{ theme?: string }>`
 	width: 36px;
 	height: 36px;
-	background-color: #e0e0e0;
+	background-color: ${({ theme }) =>
+		theme === 'dark' ? '#3a3a3a' : '#e0e0e0'};
 	background-image: linear-gradient(
 		to right,
-		#f0f0f0 0%,
-		#e0e0e0 20%,
-		#f0f0f0 40%,
-		#f0f0f0 100%
+		${({ theme }) => (theme === 'dark' ? '#2c2c2c' : '#f0f0f0')} 0%,
+		${({ theme }) => (theme === 'dark' ? '#3a3a3a' : '#e0e0e0')} 20%,
+		${({ theme }) => (theme === 'dark' ? '#2c2c2c' : '#f0f0f0')} 40%,
+		${({ theme }) => (theme === 'dark' ? '#2c2c2c' : '#f0f0f0')} 100%
 	);
 	background-repeat: no-repeat;
 	background-size: 200% 100%;
@@ -112,16 +118,17 @@ const ShimmerCircle = styled.div`
 	border-radius: 50%;
 `
 
-const ShimmerText = styled.div<{ width?: string }>`
+const ShimmerText = styled.div<{ width?: string; theme?: string }>`
 	width: ${({ width }) => width || '100%'};
 	height: 16px;
-	background-color: #e0e0e0;
+	background-color: ${({ theme }) =>
+		theme === 'dark' ? '#3a3a3a' : '#e0e0e0'};
 	background-image: linear-gradient(
 		to right,
-		#f0f0f0 0%,
-		#e0e0e0 20%,
-		#f0f0f0 40%,
-		#f0f0f0 100%
+		${({ theme }) => (theme === 'dark' ? '#2c2c2c' : '#f0f0f0')} 0%,
+		${({ theme }) => (theme === 'dark' ? '#3a3a3a' : '#e0e0e0')} 20%,
+		${({ theme }) => (theme === 'dark' ? '#2c2c2c' : '#f0f0f0')} 40%,
+		${({ theme }) => (theme === 'dark' ? '#2c2c2c' : '#f0f0f0')} 100%
 	);
 	background-repeat: no-repeat;
 	background-size: 200% 100%;
@@ -133,15 +140,12 @@ const ShimmerText = styled.div<{ width?: string }>`
 const Overlay = styled.div`
 	position: fixed;
 	inset: 0;
-	position: fixed;
-	inset: 0;
 	z-index: 999;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: rgba(0, 0, 0, 0.3);
 	cursor: pointer;
-	/* backdrop-filter: blur(3px); */
 `
 
 const SpinnerImage = styled.img`

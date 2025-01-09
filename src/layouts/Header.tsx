@@ -7,6 +7,8 @@ import {
 	FaMicrophone,
 	FaBars,
 	FaTimes,
+	FaSun,
+	FaMoon,
 } from 'react-icons/fa'
 
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -21,6 +23,7 @@ import { useQuery } from '@tanstack/react-query'
 import { fetchYouTubeSuggestions } from '../utils/api'
 import { IoSearchCircleOutline } from 'react-icons/io5'
 import { useAppContext } from '../globalStates'
+import { useThemeContext } from '../globalStates/contexts/ThemeContext'
 
 const MainNavigation = () => {
 	const [searchTerm, setSearchTerm] = useState<string | ''>('')
@@ -30,6 +33,7 @@ const MainNavigation = () => {
 	const [isSuggestionSelected, setIsSuggestionSelected] = useState(false)
 	const [isTyping, setIsTyping] = useState(false)
 	const { updateFilter } = useAppContext()
+	const { theme, toggleTheme } = useThemeContext()
 
 	const {
 		data: suggestions = [],
@@ -85,20 +89,24 @@ const MainNavigation = () => {
 		}
 	}
 
+	const isDarkMode = theme === 'dark'
+
 	return (
-		<MainNavigationWrapper onClick={() => setIsSuggestionSelected(false)}>
+		<MainNavigationWrapper
+			onClick={() => setIsSuggestionSelected(false)}
+			isDarkMode={isDarkMode}>
 			<nav>
 				<Link to={'/'}>
 					<HeaderLetContainer>
-						<IconButton className="hid-sm">
+						<IconButton className="hid-sm" isDarkMode={isDarkMode}>
 							<FaBars className="icon" />
 						</IconButton>
 
-						<Logo>
+						<Logo isDarkMode={isDarkMode}>
 							<img
 								className="logo-img"
 								src={image}
-								alt="Picture of the youtube"
+								alt="YouTube logo"
 								style={{
 									width: '100%',
 									height: '100%',
@@ -109,26 +117,31 @@ const MainNavigation = () => {
 					</HeaderLetContainer>
 				</Link>
 
-				<HeaderMiddleContainer>
-					<SearchContainer onSubmit={handleSubmit}>
+				<HeaderMiddleContainer isDarkMode={isDarkMode}>
+					<SearchContainer onSubmit={handleSubmit} isDarkMode={isDarkMode}>
 						<input
 							type="text"
 							placeholder="Search"
 							value={searchTerm}
 							onChange={handleChange}
+							style={{
+								backgroundColor: theme === 'dark' ? '#333' : '#fff',
+								color: theme === 'dark' ? '#fff' : '#000',
+							}}
 						/>
 						{searchTerm && (
-							<ClearIcon onClick={clearInput}>
+							<ClearIcon onClick={clearInput} isDarkMode={isDarkMode}>
 								<FaTimes />
 							</ClearIcon>
 						)}
 						<FaSearch className="icon" />
 					</SearchContainer>
-					{isLoading && <p>Loading...</p>}
+					{/* {isLoading && <p>Loading...</p>} */}
 					{isTyping && suggestions.length > 0 && !isSuggestionSelected && (
-						<SuggestionDropdown>
+						<SuggestionDropdown isDarkMode={isDarkMode}>
 							{suggestions.map((suggestion) => (
 								<SuggestionItem
+									isDarkMode={isDarkMode}
 									key={suggestion.key}
 									onClick={() => handleSuggestionClick(suggestion.value)}>
 									<IoSearchCircleOutline
@@ -140,29 +153,46 @@ const MainNavigation = () => {
 						</SuggestionDropdown>
 					)}
 				</HeaderMiddleContainer>
+
 				<HeaderRightContainer>
-					<IconButton className="icon-rounded MuiSvgIconCustom">
+					<IconButton
+						className="icon-rounded MuiSvgIconCustom"
+						isDarkMode={isDarkMode}>
 						<FaMicrophone className="icon" />
 					</IconButton>
 
-					<IconButton className="icon-rounded MuiSvgIconCustom">
+					<IconButton
+						className="icon-rounded MuiSvgIconCustom"
+						isDarkMode={isDarkMode}>
 						<FaVideo className="icon" />
 					</IconButton>
 
-					<IconButton className="icon-rounded MuiSvgIconCustom">
+					<IconButton
+						className="icon-rounded MuiSvgIconCustom"
+						isDarkMode={isDarkMode}>
 						<FaTh className="icon" />
 					</IconButton>
 
-					<IconButton className="icon-rounded MuiSvgIconCustom">
+					<IconButton
+						className="icon-rounded MuiSvgIconCustom"
+						isDarkMode={isDarkMode}>
 						<FaBell className="icon" />
 						<div className="absolute-counter" style={{ fontSize: '14px' }}>
 							{getRandomIntNumberBetween(1, 8)}
 						</div>
 					</IconButton>
-					<Logo>
+
+					<IconButton onClick={toggleTheme} isDarkMode={isDarkMode}>
+						{theme === 'dark' ? (
+							<FaSun className="icon" />
+						) : (
+							<FaMoon className="icon" />
+						)}
+					</IconButton>
+					<Logo isDarkMode={isDarkMode}>
 						<img
 							className="logo-img"
-							alt="Picture of the youtube"
+							alt="User Profile"
 							style={{
 								width: '100%',
 								height: '100%',
@@ -185,7 +215,11 @@ const MainNavigation = () => {
 
 export default MainNavigation
 
-const IconButton = styled.div`
+interface ThemProp {
+	isDarkMode: boolean
+}
+
+const IconButton = styled.div<ThemProp>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -199,15 +233,17 @@ const IconButton = styled.div`
 	height: 2.6rem;
 	margin-right: 1rem;
 	&:hover {
-		background-color: rgba(0, 0, 0, 0.1);
+		background-color: ${(props) =>
+			props.isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
 	}
 
 	&:active {
-		background-color: rgba(0, 0, 0, 0.2);
+		background-color: ${(props) =>
+			props.isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
 	}
 
 	.icon {
-		color: gray;
+		color: ${(props) => (props.isDarkMode ? '#fff' : 'gray')};
 		font-size: 2rem;
 		margin-right: 0;
 	}
@@ -240,7 +276,8 @@ const Logo = styled(IconButton)`
 		height: 3.2rem;
 	}
 `
-const MainNavigationWrapper = styled.header`
+
+const MainNavigationWrapper = styled.header<ThemProp>`
 	width: 100vw;
 	min-width: 100vw;
 	position: sticky;
@@ -248,18 +285,18 @@ const MainNavigationWrapper = styled.header`
 	align-items: center;
 	top: 0;
 	z-index: 110;
-	background-color: white;
+	background-color: ${(props) => (props.isDarkMode ? '#333' : 'white')};
 	border-radius: 6px;
-	box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0px 2px
+		${(props) =>
+			props.isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
 	padding-right: 2rem;
 	nav {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		background: white;
-		/* max-width: 90.75rem; */
-		/* overflow: hidden; */
+		background: ${(props) => (props.isDarkMode ? '#333' : 'white')};
 		margin: 0 auto;
 		padding-top: 0.3rem;
 
@@ -284,21 +321,21 @@ const HeaderLetContainer = styled.div`
 	}
 `
 
-const HeaderMiddleContainer = styled.div`
+const HeaderMiddleContainer = styled.div<ThemProp>`
 	position: relative;
 	flex: 1;
 	display: flex;
 	align-items: center;
 	margin: 0 1rem;
 	max-width: 38.75rem;
-	color: gray;
+	color: ${(props) => (props.isDarkMode ? '#fff' : 'gray')};
 	border-radius: 6px;
 	align-items: center;
 	padding: 10px;
 	cursor: pointer;
 	transition: 0.3s;
-	background-color: #fff;
-	border: 1px solid #cccccc;
+	background-color: ${(props) => (props.isDarkMode ? '#333' : '#fff')};
+	border: 1px solid ${(props) => (props.isDarkMode ? '#444' : '#cccccc')};
 	box-shadow: 0 0 3px 2px rgb(220 227 232 / 50%) rgb(0 0 0 / 7%) inset;
 
 	&:hover,
@@ -317,6 +354,7 @@ const HeaderMiddleContainer = styled.div`
 		outline: none;
 		background: transparent;
 		font-size: 1rem;
+		color: ${(props) => (props.isDarkMode ? '#fff' : '#333')};
 	}
 
 	.icon {
@@ -330,12 +368,11 @@ const HeaderMiddleContainer = styled.div`
 `
 
 const HeaderRightContainer = styled.div`
-	/* flex: 0.3; */
 	display: flex;
 	align-items: center;
 `
 
-const SearchContainer = styled.form`
+const SearchContainer = styled.form<ThemProp>`
 	width: 100%;
 	display: flex;
 	justify-content: flex-end;
@@ -372,8 +409,7 @@ const SearchContainer = styled.form`
 	}
 
 	.icon {
-		/* color: gray;
-		font-size: 2rem; */
+		color: ${(props) => (props.isDarkMode ? '#fff' : 'gray')};
 	}
 
 	.icon-rounded {
@@ -383,13 +419,13 @@ const SearchContainer = styled.form`
 	}
 `
 
-const SuggestionDropdown = styled.ul`
+const SuggestionDropdown = styled.ul<ThemProp>`
 	position: absolute;
 	top: 100%;
 	left: 0;
 	width: 100%;
-	background: white;
-	border: 1px solid #ccc;
+	background: ${(props) => (props.isDarkMode ? '#333' : 'white')};
+	border: 1px solid ${(props) => (props.isDarkMode ? '#444' : '#ccc')};
 	border-radius: 4px;
 	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 	z-index: 110;
@@ -398,15 +434,15 @@ const SuggestionDropdown = styled.ul`
 	overflow-y: auto;
 `
 
-const SuggestionItem = styled.li`
+const SuggestionItem = styled.li<ThemProp>`
 	padding: 0.5rem;
 	cursor: pointer;
 	&:hover {
-		background-color: #f0f0f0;
+		background-color: ${(props) => (props.isDarkMode ? '#444' : '#f0f0f0')};
 	}
 `
 
-const ClearIcon = styled.div`
+const ClearIcon = styled.div<ThemProp>`
 	position: absolute;
 	top: 50%;
 	right: 2.5rem;
@@ -414,8 +450,8 @@ const ClearIcon = styled.div`
 	cursor: pointer;
 	padding: 0.2rem;
 	font-size: 1.2rem;
-	color: #666;
+	color: ${(props) => (props.isDarkMode ? '#ccc' : '#666')};
 	&:hover {
-		color: #000;
+		color: ${(props) => (props.isDarkMode ? '#fff' : '#000')};
 	}
 `

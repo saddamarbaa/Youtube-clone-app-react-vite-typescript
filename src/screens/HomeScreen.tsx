@@ -28,7 +28,7 @@ export default function HomeScreen() {
 		// enabled: false,
 	})
 
-	if (isLoading) return <ShimmerLoader />
+	// if (isLoading) return <ShimmerLoader />
 
 	return (
 		<Layout>
