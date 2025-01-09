@@ -4,6 +4,7 @@ import moment from 'moment/moment'
 import { YouTubeVideo } from '../types'
 import { getRandomIntNumberBetween } from '../utils/lib'
 import { kFormatter } from '../utils/helpers'
+import { useThemeContext } from '../globalStates/contexts/ThemeContext'
 
 interface Props {
 	video: YouTubeVideo
@@ -14,11 +15,14 @@ export default function VideoCard({ video }: Props) {
 	const { snippet, statistics } = video
 	const { channelTitle, title, thumbnails, publishedAt } = snippet
 
+	const { theme } = useThemeContext()
+	const isDarkTheme = theme === 'dark'
+
 	// Extracting thumbnail URL and its dimensions dynamically
 	const thumbnail = thumbnails?.high || thumbnails?.medium
 
 	return (
-		<CardContainer>
+		<CardContainer isDarkTheme={isDarkTheme}>
 			{/* Pass the width and height dynamically */}
 			<Thumbnail
 				src={thumbnail.url}
@@ -29,9 +33,9 @@ export default function VideoCard({ video }: Props) {
 			<ChannelInfo>
 				<ChannelImage src={thumbnail.url} alt="Channel Thumbnail" />
 				<div>
-					<VideoTitle>{channelTitle}</VideoTitle>
-					<Description>{title}</Description>
-					<MetaData>
+					<VideoTitle isDarkTheme={isDarkTheme}>{channelTitle}</VideoTitle>
+					<Description isDarkTheme={isDarkTheme}>{title}</Description>
+					<MetaData isDarkTheme={isDarkTheme}>
 						{kFormatter(
 							statistics?.viewCount ||
 								statistics?.favoriteCount ||
@@ -54,13 +58,14 @@ const ChannelInfo = styled.div`
 	/* align-items: center; */
 `
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{ isDarkTheme: boolean }>`
 	width: 100%;
 	min-width: 300px;
 	border-radius: 12px;
 	margin: 16px;
 	overflow: hidden;
 	cursor: pointer;
+	color: ${({ isDarkTheme }) => (isDarkTheme ? '#fff' : '#000')};
 	transition: box-shadow 0.3s ease, transform 0.3s ease;
 
 	&:hover {
@@ -86,15 +91,16 @@ const ChannelImage = styled.img`
 	border-radius: 50%;
 `
 
-const VideoTitle = styled.p`
+const VideoTitle = styled.p<{ isDarkTheme: boolean }>`
 	font-size: 1.2rem;
 	font-weight: bold;
 	margin: 0;
+	color: ${({ isDarkTheme }) => (isDarkTheme ? '#ddd' : '#000')};
 `
 
-const Description = styled.p`
+const Description = styled.p<{ isDarkTheme: boolean }>`
 	font-size: 0.9rem;
-	color: #666;
+	color: ${({ isDarkTheme }) => (isDarkTheme ? '#aaa' : '#666')};
 	margin: 8px 0;
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
@@ -102,8 +108,8 @@ const Description = styled.p`
 	overflow: hidden;
 `
 
-const MetaData = styled.p`
-	color: #777;
+const MetaData = styled.p<{ isDarkTheme: boolean }>`
+	color: ${({ isDarkTheme }) => (isDarkTheme ? '#888' : '#777')};
 	font-size: 0.85rem;
 	/* margin-top: 4px; */
 `

@@ -5,6 +5,7 @@ import { YouTubeVideo } from '../types'
 import VideoCard from './VideoCard'
 import { useAppContext } from '../globalStates'
 import { useState } from 'react'
+import { useThemeContext } from '../globalStates/contexts/ThemeContext'
 
 type Props = {
 	videos: YouTubeVideo[]
@@ -35,6 +36,7 @@ const Feeds = ({ videos }: Props) => {
 	const defaultFilter = searchParams.get('filter') || 'ai and coding new' // Default to 'All'
 	const [selectedFilter, setSelectedFilter] = useState<string>(defaultFilter)
 	const { updateFilter, updateSearch } = useAppContext()
+	const { theme } = useThemeContext()
 
 	const handleFilterClick = (filter: string) => {
 		setSelectedFilter(filter)
@@ -56,10 +58,10 @@ const Feeds = ({ videos }: Props) => {
 			<Heading>
 				{filterOptions.map(({ label, value }) => (
 					<Button
+						isDarkMode={theme === 'dark'}
 						key={value}
 						onClick={() => handleFilterClick(value)}
-						selected={selectedFilter === value} // Apply selected styles
-					>
+						selected={selectedFilter === value}>
 						{label}
 					</Button>
 				))}
@@ -86,7 +88,7 @@ const Feeds = ({ videos }: Props) => {
 
 export default Feeds
 
-const Button = styled.button<{ selected: boolean }>`
+const Button = styled.button<{ selected: boolean; isDarkMode: boolean }>`
 	font: inherit;
 	cursor: pointer;
 	font-weight: bold;
@@ -95,14 +97,48 @@ const Button = styled.button<{ selected: boolean }>`
 	font-size: 1rem;
 	height: 2.6rem;
 	max-width: fit-content;
-	color: ${({ selected }) => (selected ? 'white' : 'gray')};
-	background-color: ${({ selected }) => (selected ? 'black' : '#fff')};
-	border: 1px solid ${({ selected }) => (selected ? 'black' : '#cccccc')};
+
+	/* Dynamic color and background based on dark mode and selection */
+	color: ${({ selected, isDarkMode }) =>
+		selected ? (isDarkMode ? 'black' : 'white') : isDarkMode ? '#aaa' : 'gray'};
+	background-color: ${({ selected, isDarkMode }) =>
+		selected
+			? isDarkMode
+				? 'white'
+				: 'black'
+			: isDarkMode
+			? '#2c2c2c'
+			: '#fff'};
+	border: 1px solid
+		${({ selected, isDarkMode }) =>
+			selected
+				? isDarkMode
+					? 'white'
+					: 'black'
+				: isDarkMode
+				? '#555'
+				: '#cccccc'};
+
 	transition: background-color 0.3s ease, color 0.3s ease;
 
 	&:hover {
-		background-color: ${({ selected }) => (selected ? 'black' : '#f2f2f2')};
-		border: 1px solid ${({ selected }) => (selected ? 'black' : '#f2f2f2')};
+		background-color: ${({ selected, isDarkMode }) =>
+			selected
+				? isDarkMode
+					? 'white'
+					: 'black'
+				: isDarkMode
+				? '#333'
+				: '#f2f2f2'};
+		border: 1px solid
+			${({ selected, isDarkMode }) =>
+				selected
+					? isDarkMode
+						? 'white'
+						: 'black'
+					: isDarkMode
+					? '#666'
+					: '#f2f2f2'};
 	}
 `
 

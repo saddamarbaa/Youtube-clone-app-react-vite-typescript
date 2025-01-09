@@ -21,5 +21,5 @@ const AppContainer = styled.div<AppContainerProps>`
 	font-family: 'Roboto', sans-serif;
 	transition: background-color 0.3s ease, color 0.3s ease;
 	height: 100vh;
-	overflow: hidden;
+	/* overflow: hidden; */
 `

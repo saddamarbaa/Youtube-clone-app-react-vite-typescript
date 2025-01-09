@@ -6,8 +6,12 @@ import moment from 'moment'
 import { kFormatter } from '../utils/helpers'
 import { fetchComments } from '../utils/api'
 import { mockComments } from '../utils/mockData'
+import { useThemeContext } from '../globalStates/contexts/ThemeContext'
 
 const Comments = ({ videoId }: { videoId: string }) => {
+	const { theme } = useThemeContext() // Fetch the current theme
+	const isDarkTheme = theme === 'dark' // Convert to boolean
+
 	const { data, isLoading, error } = useQuery({
 		queryKey: ['comments', videoId],
 		queryFn: () => fetchComments(videoId),
@@ -21,7 +25,7 @@ const Comments = ({ videoId }: { videoId: string }) => {
 	const comments = data || mockComments
 
 	return (
-		<CommentContainer>
+		<CommentContainer isDarkTheme={isDarkTheme}>
 			<p>{comments?.length} Comments</p>
 			{comments?.map((comment) => {
 				const {
@@ -37,10 +41,14 @@ const Comments = ({ videoId }: { videoId: string }) => {
 						<AuthorImage src={authorProfileImageUrl} alt="author" />
 						<CommentContent>
 							<AuthorInfo>
-								<AuthorName>{authorDisplayName}</AuthorName>
-								<PublishedAt>{moment(publishedAt).fromNow()}</PublishedAt>
+								<AuthorName isDarkTheme={isDarkTheme}>
+									{authorDisplayName}
+								</AuthorName>
+								<PublishedAt isDarkTheme={isDarkTheme}>
+									{moment(publishedAt).fromNow()}
+								</PublishedAt>
 							</AuthorInfo>
-							<CommentText>{textDisplay}</CommentText>
+							<CommentText isDarkTheme={isDarkTheme}>{textDisplay}</CommentText>
 							<ActionsWrapper>
 								<AiOutlineLike />
 								{kFormatter(likeCount)}
@@ -54,11 +62,13 @@ const Comments = ({ videoId }: { videoId: string }) => {
 	)
 }
 
-// Styled components
-const CommentContainer = styled.div`
+// Styled components with dark/light theme handling
+const CommentContainer = styled.div<{ isDarkTheme: boolean }>`
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	color: ${({ isDarkTheme }) =>
+		isDarkTheme ? '#fff' : '#000'}; // Adjust text color for theme
 `
 
 const CommentWrapper = styled.div`
@@ -84,20 +94,23 @@ const AuthorInfo = styled.div`
 	align-items: center;
 `
 
-const AuthorName = styled.h3`
+const AuthorName = styled.h3<{ isDarkTheme: boolean }>`
 	font-size: 16px;
 	font-weight: 600;
-	color: #374151; /* gray-700 */
+	color: ${({ isDarkTheme }) =>
+		isDarkTheme ? '#ddd' : '#374151'}; /* Adjust for dark/light mode */
 `
 
-const PublishedAt = styled.p`
+const PublishedAt = styled.p<{ isDarkTheme: boolean }>`
 	font-size: 12px;
-	color: #6b7280; /* gray-500 */
+	color: ${({ isDarkTheme }) =>
+		isDarkTheme ? '#aaa' : '#6b7280'}; /* Adjust for dark/light mode */
 `
 
-const CommentText = styled.p`
+const CommentText = styled.p<{ isDarkTheme: boolean }>`
 	font-size: 14px;
-	color: #000;
+	color: ${({ isDarkTheme }) =>
+		isDarkTheme ? '#eee' : '#000'}; /* Adjust for dark/light mode */
 `
 
 const ActionsWrapper = styled.div`

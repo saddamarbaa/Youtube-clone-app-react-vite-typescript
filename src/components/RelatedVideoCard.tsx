@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router'
 import styled from 'styled-components'
 import moment from 'moment'
-
 import { kFormatter } from '../utils/helpers'
 import { getRandomIntNumberBetween } from '../utils/lib'
 import { YouTubeVideo } from '../types'
+import { useThemeContext } from '../globalStates/contexts/ThemeContext'
 
 type Props = {
 	video: YouTubeVideo
@@ -12,6 +12,7 @@ type Props = {
 
 export default function RelatedVideoCard({ video }: Props) {
 	const history = useNavigate()
+	const { theme } = useThemeContext()
 
 	const { snippet, statistics } = video
 	const { title, thumbnails, publishedAt } = snippet
@@ -31,7 +32,9 @@ export default function RelatedVideoCard({ video }: Props) {
 			key={videoId}
 			onClick={() => {
 				onHandleClick(videoId)
-			}}>
+			}}
+			isDarkTheme={theme === 'dark'} // Pass boolean directly for dark theme
+		>
 			<Thumbnail
 				src={thumbnail.url}
 				alt="Video Thumbnail"
@@ -39,9 +42,9 @@ export default function RelatedVideoCard({ video }: Props) {
 				height={thumbnail.height}
 			/>
 			<VideoDetail>
-				<VideoTitle>{title}</VideoTitle>
+				<VideoTitle isDarkTheme={theme === 'dark'}>{title}</VideoTitle>
 
-				<VideoMeta>
+				<VideoMeta isDarkTheme={theme === 'dark'}>
 					{kFormatter(
 						statistics?.viewCount ||
 							statistics?.favoriteCount ||
@@ -52,27 +55,30 @@ export default function RelatedVideoCard({ video }: Props) {
 					views • {moment(publishedAt).fromNow()}
 				</VideoMeta>
 
-				<VideoDescription>Prime Video</VideoDescription>
+				<VideoDescription isDarkTheme={theme === 'dark'}>
+					Prime Video
+				</VideoDescription>
 			</VideoDetail>
 		</CardContainer>
 	)
 }
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{ isDarkTheme: boolean }>`
 	width: 100%;
 	border-radius: 12px;
 	margin-bottom: 16px;
 	overflow: hidden;
 	cursor: pointer;
 	display: flex;
-	/* gap: 1rem; */
-	background-color: #fff;
+	background-color: ${({ isDarkTheme }) =>
+		isDarkTheme ? '#333' : '#fff'}; // Toggle background color based on theme
 	transition: box-shadow 0.3s ease, transform 0.3s ease;
 
 	&:hover {
 		transform: translateY(-5px);
 		opacity: 0.95;
-		background-color: #f5f5f5;
+		background-color: ${({ isDarkTheme }) =>
+			isDarkTheme ? '#444' : '#f5f5f5'}; // Toggle hover background color
 	}
 `
 
@@ -91,22 +97,25 @@ const VideoDetail = styled.div`
 	padding: 8px;
 `
 
-const VideoTitle = styled.p`
+const VideoTitle = styled.p<{ isDarkTheme: boolean }>`
 	font-size: 1.25rem;
 	font-weight: bold;
 	line-height: 1.3;
-	color: #333;
+	color: ${({ isDarkTheme }) =>
+		isDarkTheme ? '#fff' : '#333'}; // Toggle text color based on theme
 	overflow: hidden;
 `
 
-const VideoMeta = styled.p`
+const VideoMeta = styled.p<{ isDarkTheme: boolean }>`
 	font-size: 1rem;
-	color: #777;
+	color: ${({ isDarkTheme }) =>
+		isDarkTheme ? '#bbb' : '#777'}; // Adjust for dark/light mode
 	line-height: 1.5;
 `
 
-const VideoDescription = styled.p`
+const VideoDescription = styled.p<{ isDarkTheme: boolean }>`
 	font-size: 0.95rem;
-	color: #444;
+	color: ${({ isDarkTheme }) =>
+		isDarkTheme ? '#ddd' : '#444'}; // Toggle text color based on theme
 	font-weight: 500;
 `

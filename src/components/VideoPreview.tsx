@@ -6,6 +6,7 @@ import { kFormatter } from '../utils/helpers'
 import Comments from './Comments'
 import { YouTubeVideo } from '../types'
 import { useSearchParams } from 'react-router'
+import { useThemeContext } from '../globalStates/contexts/ThemeContext'
 
 type Props = {
 	video: YouTubeVideo
@@ -13,6 +14,7 @@ type Props = {
 export default function VideoPreview({ video }: Props) {
 	const [showDescription, setShowDescription] = useState(false)
 	const [searchParams] = useSearchParams()
+	const { theme } = useThemeContext()
 
 	const { snippet, statistics } = video
 	const { channelTitle, title, thumbnails, publishedAt, description } =
@@ -63,7 +65,7 @@ export default function VideoPreview({ video }: Props) {
 						</Description>
 					</div>
 				</ChannelInfo>
-				<ChannelDescriptionInfo>
+				<ChannelDescriptionInfo isDarkMode={theme === 'dark'}>
 					<MetaData>
 						{formattedViewCount} views • {formattedPublishedAt}
 					</MetaData>
@@ -143,9 +145,11 @@ const Description = styled.p`
 	/* margin: 8px 0; */
 `
 
-const ChannelDescriptionInfo = styled.div`
+const ChannelDescriptionInfo = styled.div<{ isDarkMode: boolean }>`
 	padding: 1rem;
-	background-color: #f3f4f6;
+	background-color: ${(props) => {
+		return props.isDarkMode ? '#444' : '#f3f4f6'
+	}};
 	border-radius: 8px;
 	padding: 8px;
 	margin-top: 8px;

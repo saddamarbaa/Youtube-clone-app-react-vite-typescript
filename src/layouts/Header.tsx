@@ -37,7 +37,7 @@ const MainNavigation = () => {
 
 	const {
 		data: suggestions = [],
-		isLoading,
+		// isLoading,
 		// error,
 	} = useQuery({
 		queryKey: ['youtubeSearch', debouncedSearchTerm],
@@ -125,6 +125,7 @@ const MainNavigation = () => {
 							value={searchTerm}
 							onChange={handleChange}
 							style={{
+								outline: 'none',
 								backgroundColor: theme === 'dark' ? '#333' : '#fff',
 								color: theme === 'dark' ? '#fff' : '#000',
 							}}

@@ -1,11 +1,11 @@
 import { useSearchParams } from 'react-router'
 import styled from 'styled-components'
+import { useQuery } from '@tanstack/react-query'
 
 import Layout from '../layouts'
 import VideoPreview from '../components/VideoPreview'
 import ErrorCard from '../components/ErrorCard'
 import RelatedVideos from '../components/RelatedVideos'
-import { useQuery } from '@tanstack/react-query'
 import { fetchVideo } from '../utils/api'
 import { mockVideo } from '../utils/mockData'
 import ShimmerLoader from '../components/ShimmerLoader'
