@@ -17,6 +17,7 @@ Welcome to my **YouTube Clone** project! This dynamic, full-stack video streamin
 - **User Authentication**: Secure user sign-up and login functionality via **OAuth** (Google).
 - **Video Streaming**: High-quality video playback with controls like play, pause, seek, and volume adjustments.
 - **Live Search with Auto-Suggest & Debouncing**: Instant video search with real-time suggestions and optimized performance using debouncing.
+- **Dark/Light Mode**: Toggle between dark and light mode for a more customized viewing experience based on user preference.
 - **Category-Based Filters**: Easily filter videos by categories like **AI**, **Coding**, **News**, **Music**, **Sport**, **Development**, and more.
 - **Personalized Recommendations**: Personalized video recommendations based on user interactions.
 - **Responsive Design**: Fully responsive UI optimized for both desktop and mobile devices, ensuring a seamless experience across platforms.
@@ -24,7 +25,7 @@ Welcome to my **YouTube Clone** project! This dynamic, full-stack video streamin
 
 
 ### Planned Features:
-- **Dark/Light Mode**: Toggle between dark and light mode for a more customized viewing experience based on user preference.
+
 - **Video Uploads**: Authenticated users can upload their own videos and manage them in a personal library.
 - **Comments & Likes**: Engage with videos by liking and commenting (available for authenticated users).
 - **Playlists**: Create, manage, and organize video playlists for a personalized viewing experience.
@@ -305,104 +306,71 @@ Once deployed, your application will be live, and you can access it through the 
 
 
 ## 🤝 Contributing
-We welcome contributions from the community! If you'd like to contribute, please follow these steps:
 
-We appreciate all contributions, including bug fixes, enhancements, and suggestions for new features.
+Contributions make the open-source community an amazing place to learn, inspire, and create. We deeply appreciate all contributions, whether it's fixing bugs, adding features, or suggesting improvements. Thank you for being a part of our community! 🥰
 
+### How to Contribute
 
-### **How to Contribute**
+1. **Fork the repository**  
+   Click the **Fork** button on GitHub.
 
-1. **Fork the repository**:
+2. **Clone the repository**  
+   ```bash
+   git clone https://github.com/saddamarbaa/Youtube-clone-app-react-vite-typescript
+   ```
 
-   - Go to the project repository on GitHub and click on the **Fork** button to create a copy of the repository under your own GitHub account.
+3. **Create a new branch**  
+   ```bash
+   git checkout -b your-feature-branch
+   ```
 
-2. **Clone the repository**:
+4. **Make your changes**  
+   Implement your changes with clear commit messages.
 
-   - Clone your forked repository to your local machine:
-   
- ```bash
-https://github.com/saddamarbaa/Youtube-clone-app-react-vite-typescript
-```
+5. **Test your changes**  
+   Run tests to ensure everything works.
 
-3. **Create a new branch**:
+6. **Commit your changes**  
+   ```bash
+   git add .
+   git commit -m "Add/Update feature description"
+   ```
 
-   - Create a new branch for your feature or bug fix:
-     ```bash
-     git checkout -b your-feature-branch
-     ```
+7. **Push your changes**  
+   ```bash
+   git push origin your-feature-branch
+   ```
 
-4. **Make your changes**:
+8. **Create a Pull Request (PR)**  
+   Go to the **Pull Requests** tab, click **New Pull Request**, and submit it for review.
 
-   - Make your changes or additions to the project. Be sure to write clear, concise commit messages explaining your changes.
+### Code of Conduct
 
-5. **Test your changes**:
+Please be respectful and kind to other contributors. By participating, you agree to abide by the project's Code of Conduct.
 
-   - Run tests and ensure everything works as expected.
+### Issues and Bugs
 
-6. **Commit your changes**:
+1. **Check existing issues**: Ensure the problem or feature request hasn't been reported yet.
+2. **Report a bug/feature**: If not, create a new issue with:
+   - Steps to reproduce (if applicable)
+   - Expected vs actual behavior
+   - Any error messages/logs
 
-   - Stage and commit your changes:
-     ```bash
-     git add .
-     git commit -m "Add/Update feature description"
-     ```
+### Documentation
 
-7. **Push your changes**:
+1. Document new features in **README.md**.
+2. Update API docs for any changes.
 
-   - Push your changes to your forked repository:
-     ```bash
-     git push origin your-feature-branch
-     ```
+### Thanks for your contributions!
 
-8. **Create a Pull Request (PR)**:
-   - Go to the **Pull Requests** tab of the original repository and click **New Pull Request**.
-   - Select your branch and explain the changes you've made.
-   - Submit the PR for review.
-
-### **Code of Conduct**
-
-By participating in this project, you agree to abide by the project's Code of Conduct. Please be respectful and kind to other contributors.
-
-### **Issues and Bugs**
-
-If you find a bug or want to request a feature:
-
-1. **Check the issues**: Before opening a new issue, check if the problem or feature request already exists.
-2. **Report a bug or request a feature**: If the issue hasn’t been reported, create a new issue with a clear description of the problem or feature request. Please include:
-   - Steps to reproduce the issue (if applicable)
-   - Expected and actual behavior
-   - Any error messages or logs
-   
-
-### **Documentation**
-
-If you're contributing to the documentation:
-
-1. Ensure that any new or updated features are properly documented in the **README.md**.
-2. Ensure that any API changes are reflected in the API documentation.
-
-### **Thanks for your contributions!**
-
-Your contributions help improve this project and make it better for everyone. Thank you for your help!
+Your contributions improve this project for everyone. Thank you! 🙏
 
 
 ## 🔄 Status
 
 - **Current Status**: This project is in **active development**.
-- **Upcoming Features**:
-  - **Dark/Light Mode**: Toggle between dark and light mode for a more customized viewing experience based on user preference.
-  - **Video Uploads**: Authenticated users can upload their own videos and manage them in a personal library.
-  - **Comments & Likes**: Engage with videos by liking and commenting (available for authenticated users).
-  - **Playlists**: Create, manage, and organize video playlists for a personalized viewing experience.
-  - **Real-Time Chat**: Add a chat section for live videos using WebSocket.
-  - **More Advanced Recommendation System**: Further improve recommendation algorithms based on user preferences and video metadata.
-- **Contributions**: Contributions are welcome! See the [Contributing](#contributing) section for more.
-- **Known Issues**:
-  - Issue 1: Improve search functionality for better video recommendations.
-  - Issue 2: Enhance UI/UX for mobile responsiveness.
-  - See the [GitHub Issues page] for more.
 
-
+  
 
 ## 💡 Inspiration
 
