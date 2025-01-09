@@ -97,47 +97,32 @@ const Button = styled.button<{ selected: boolean; isDarkMode: boolean }>`
 	font-size: 1rem;
 	height: 2.6rem;
 	max-width: fit-content;
-
-	/* Dynamic color and background based on dark mode and selection */
 	color: ${({ selected, isDarkMode }) =>
-		selected ? (isDarkMode ? 'black' : 'white') : isDarkMode ? '#aaa' : 'gray'};
+		selected ? 'white' : isDarkMode ? '#ccc' : 'gray'};
 	background-color: ${({ selected, isDarkMode }) =>
-		selected
-			? isDarkMode
-				? 'white'
-				: 'black'
-			: isDarkMode
-			? '#2c2c2c'
-			: '#fff'};
+		selected ? 'black' : isDarkMode ? '#333' : '#fff'};
 	border: 1px solid
 		${({ selected, isDarkMode }) =>
 			selected
 				? isDarkMode
-					? 'white'
-					: 'black'
+					? 'black'
+					: '#ccc'
 				: isDarkMode
-				? '#555'
-				: '#cccccc'};
-
+				? '#444'
+				: '#ccc'};
 	transition: background-color 0.3s ease, color 0.3s ease;
 
 	&:hover {
 		background-color: ${({ selected, isDarkMode }) =>
-			selected
-				? isDarkMode
-					? 'white'
-					: 'black'
-				: isDarkMode
-				? '#333'
-				: '#f2f2f2'};
+			selected ? 'black' : isDarkMode ? '#444' : '#f2f2f2'};
 		border: 1px solid
 			${({ selected, isDarkMode }) =>
 				selected
 					? isDarkMode
-						? 'white'
-						: 'black'
+						? 'black'
+						: '#ccc'
 					: isDarkMode
-					? '#666'
+					? '#444'
 					: '#f2f2f2'};
 	}
 `
