@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { useNavigate, useSearchParams } from 'react-router'
+import { useNavigate } from 'react-router'
 
 import { YouTubeVideo } from '../types'
 import VideoCard from './VideoCard'
 import { useAppContext } from '../globalStates'
-import { useState } from 'react'
+
 import { useThemeContext } from '../globalStates/contexts/ThemeContext'
 
 type Props = {
@@ -32,14 +32,10 @@ const filterOptions = [
 
 const Feeds = ({ videos }: Props) => {
 	const navigate = useNavigate()
-	const [searchParams] = useSearchParams()
-	const defaultFilter = searchParams.get('filter') || 'ai and coding new' // Default to 'All'
-	const [selectedFilter, setSelectedFilter] = useState<string>(defaultFilter)
-	const { updateFilter, updateSearch } = useAppContext()
+	const { state, updateFilter, updateSearch } = useAppContext()
 	const { theme } = useThemeContext()
 
 	const handleFilterClick = (filter: string) => {
-		setSelectedFilter(filter)
 		updateFilter(filter)
 	}
 
@@ -61,7 +57,7 @@ const Feeds = ({ videos }: Props) => {
 						isDarkMode={theme === 'dark'}
 						key={value}
 						onClick={() => handleFilterClick(value)}
-						selected={selectedFilter === value}>
+						selected={(state?.filter || filterOptions[0].value) === value}>
 						{label}
 					</Button>
 				))}
@@ -76,7 +72,7 @@ const Feeds = ({ videos }: Props) => {
 								: video.id
 						return (
 							<div key={videoId} onClick={() => handleRedirect(video)}>
-								<VideoCard video={video} filter={selectedFilter} />
+								<VideoCard video={video} />
 							</div>
 						)
 					})}

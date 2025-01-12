@@ -18,6 +18,8 @@ export default function HomeScreen() {
 
 	const filter = state.filter
 
+	console.log('Filter from context:', state.filter)
+
 	const {
 		data: videos,
 		isLoading,
