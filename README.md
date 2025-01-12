@@ -6,8 +6,10 @@ Welcome to my **YouTube Clone** project! This dynamic, full-stack video streamin
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://your-build-link)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
-[![React](https://img.shields.io/badge/react-16.13.1-61DAFB?style=flat&logo=react&logoColor=white)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.4.4-blue)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/react-18.3.1-61DAFB?style=flat&logo=react&logoColor=white)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6.2-blue)](https://www.typescriptlang.org/)
+[![Version](https://img.shields.io/badge/version-0.0.0-blue)](https://github.com/saddamarbaa/Youtube-clone-app-react-vite-typescript/releases)
+[![Last Commit](https://img.shields.io/github/last-commit/saddamarbaa/Youtube-clone-app-react-vite-typescript)](https://github.com/saddamarbaa/Youtube-clone-app-react-vite-typescript/commits/main)
 
 
 ## ✨ Features
@@ -396,6 +398,11 @@ Your feedback helps us improve the project and provide a better experience for e
 This project is licensed under the [MIT License](LICENSE).
 
 You are free to use, modify, and distribute the code, but please ensure you follow the terms of the license. See the [LICENSE](LICENSE) file for more details.
+
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=saddamarbaa/Youtube-clone-app-react-vite-typescript&type=Date)](https://star-history.com/#&Date)
+
 
 
 ## 🌐 Social Links
