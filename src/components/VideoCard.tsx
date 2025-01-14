@@ -5,6 +5,7 @@ import { YouTubeVideo } from '../types'
 import { getRandomIntNumberBetween } from '../utils/lib'
 import { kFormatter } from '../utils/helpers'
 import { useThemeContext } from '../globalStates/contexts/ThemeContext'
+import { useMemo } from 'react'
 
 interface Props {
 	video: YouTubeVideo
@@ -20,6 +21,11 @@ export default function VideoCard({ video }: Props) {
 
 	// Extracting thumbnail URL and its dimensions dynamically
 	const thumbnail = thumbnails?.high || thumbnails?.medium
+
+	// Memoizing the random number so it's calculated only once
+	const randomViewCount = useMemo(() => {
+		return getRandomIntNumberBetween(1200000, 0)
+	}, [])
 
 	return (
 		<CardContainer isDarkTheme={isDarkTheme}>
@@ -41,7 +47,7 @@ export default function VideoCard({ video }: Props) {
 								statistics?.favoriteCount ||
 								statistics?.commentCount ||
 								statistics?.likeCount ||
-								getRandomIntNumberBetween(1200000, 0),
+								randomViewCount,
 						)}{' '}
 						views • {moment(publishedAt).fromNow()}
 					</MetaData>
