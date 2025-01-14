@@ -17,7 +17,7 @@ import { Link } from 'react-router'
 import { auth } from '../config'
 import { getRandomIntNumberBetween } from '../utils/lib'
 import image from '../assets/images/youtube_logo_icon.png'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useDebounce } from '../customHooks/useDebounce'
 import { useQuery } from '@tanstack/react-query'
 import { fetchYouTubeSuggestions } from '../utils/api'
@@ -34,6 +34,7 @@ const MainNavigation = () => {
 	const [isTyping, setIsTyping] = useState(false)
 	const { updateFilter } = useAppContext()
 	const { theme, toggleTheme } = useThemeContext()
+	const notifications = useMemo(() => getRandomIntNumberBetween(1, 15), [])
 
 	const {
 		data: suggestions = [],
@@ -179,7 +180,7 @@ const MainNavigation = () => {
 						isDarkMode={isDarkMode}>
 						<FaBell className="icon" />
 						<div className="absolute-counter" style={{ fontSize: '14px' }}>
-							{getRandomIntNumberBetween(1, 8)}
+							{notifications}
 						</div>
 					</IconButton>
 
@@ -195,8 +196,8 @@ const MainNavigation = () => {
 							className="logo-img"
 							alt="User Profile"
 							style={{
-								width: '100%',
-								height: '100%',
+								width: '2.5rem',
+								height: '2.5rem',
 								objectFit: 'cover',
 								borderRadius: '50%',
 							}}
@@ -331,11 +332,11 @@ const HeaderMiddleContainer = styled.div<ThemProp>`
 	max-width: 38.75rem;
 	color: ${(props) => (props.isDarkMode ? '#fff' : 'gray')};
 	border-radius: 6px;
-	align-items: center;
-	padding: 10px;
+	padding: 12px;
 	cursor: pointer;
-	transition: 0.3s;
-	background-color: ${(props) => (props.isDarkMode ? '#333' : '#fff')};
+	transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease,
+		box-shadow 0.3s ease;
+	/* background-color: ${(props) => (props.isDarkMode ? '#333' : '#fff')}; */
 	border: 1px solid ${(props) => (props.isDarkMode ? '#444' : '#cccccc')};
 	box-shadow: 0 0 3px 2px rgb(220 227 232 / 50%) rgb(0 0 0 / 7%) inset;
 
@@ -356,6 +357,7 @@ const HeaderMiddleContainer = styled.div<ThemProp>`
 		background: transparent;
 		font-size: 1rem;
 		color: ${(props) => (props.isDarkMode ? '#fff' : '#333')};
+		transition: color 0.3s ease;
 	}
 
 	.icon {
