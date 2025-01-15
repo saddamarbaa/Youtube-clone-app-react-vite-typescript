@@ -89,6 +89,10 @@ const Thumbnail = styled.img<{ width?: number; height?: number }>`
 	max-height: 220px;
 	margin-bottom: 4px;
 	min-width: 320px;
+	@media (max-width: 560px) {
+		width: 90vw;
+		height: 250px;
+	}
 `
 
 const ChannelImage = styled.img`
