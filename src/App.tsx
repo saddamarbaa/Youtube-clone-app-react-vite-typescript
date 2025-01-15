@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 import RouteLayout from './Route'
 import { useThemeContext } from './globalStates/contexts/ThemeContext'
+import { ErrorBoundary } from './components/ErrorBoundary'
 
 export default function App() {
 	const { theme } = useThemeContext()
 	return (
 		<AppContainer isDarkMode={theme === 'dark'}>
-			<RouteLayout />
+			<ErrorBoundary>
+				<RouteLayout />
+			</ErrorBoundary>
 		</AppContainer>
 	)
 }
